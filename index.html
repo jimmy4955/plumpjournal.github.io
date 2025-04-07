@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>Plump Journal｜胖胖幻想創作站</title>
+  <title>肥満化✧AI研究所｜Plump Journal</title>
   <style>
     body {
       font-family: "微軟正黑體", sans-serif;
@@ -76,16 +76,47 @@
     }
 
     .image-card img {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
 
-    .caption {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #555;
+    /* Modal 放大圖層 */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #overlay-img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      padding: 20px;
+    }
+    .nav-btn:hover {
+      color: #ffb3c6;
+    }
+    .nav-left {
+      left: 20px;
+    }
+    .nav-right {
+      right: 20px;
     }
   </style>
 </head>
@@ -106,19 +137,57 @@
       <div id="main-area">Loading...</div>
     </div>
   </div>
-
+  
+  <div id="overlay">
+    <span class="nav-btn nav-left" onclick="navigate(-1)">❮</span>
+    <img id="overlay-img" src="">
+    <span class="nav-btn nav-right" onclick="navigate(1)">❯</span>
+  </div>
+  
   <script>
     function showSection(section) {
       fetch(`${section}.html`)
         .then(res => res.text())
         .then(html => {
           document.getElementById("main-area").innerHTML = html;
+          setTimeout(enableGallery, 100); // 載入完後啟用圖片點擊
         })
         .catch(() => {
           document.getElementById("main-area").innerHTML = '<p>資料無法載入</p>';
         });
     }
 
+    // 啟用縮圖點擊放大
+    let currentIndex = 0;
+    let images = [];
+
+    function enableGallery() {
+      images = Array.from(document.querySelectorAll(".image-card img"));
+      images.forEach((img, i) => {
+        img.addEventListener("click", () => {
+          currentIndex = i;
+          showOverlay(img.src);
+        });
+      });
+    }
+
+    function showOverlay(src) {
+      document.getElementById("overlay-img").src = src;
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function navigate(dir) {
+      currentIndex = (currentIndex + dir + images.length) % images.length;
+      document.getElementById("overlay-img").src = images[currentIndex].src;
+    }
+
+    document.getElementById("overlay").addEventListener("click", (e) => {
+      if (e.target.id === "overlay" || e.target.classList.contains("nav-btn")) {
+        document.getElementById("overlay").style.display = "none";
+      }
+    });
+
+    // 預設進入載入首頁
     window.onload = () => showSection("home");
   </script>
 </body>
