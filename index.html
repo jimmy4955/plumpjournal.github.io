@@ -11,9 +11,11 @@
       background-color: #fff4f6;
       color: #333;
     }
+
     .container {
       display: flex;
     }
+
     .sidebar {
       width: 220px;
       height: 100vh;
@@ -21,28 +23,66 @@
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
       background: linear-gradient(to bottom, #fddfe8 0%, #fff4f6 100%);
       color: #b54870;
+      box-sizing: border-box;
     }
+
     .sidebar h2 {
       font-size: 18px;
       color: #b54870;
       margin-bottom: 15px;
     }
+
     .sidebar ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
+
     .sidebar li {
       margin-bottom: 10px;
     }
+
     .sidebar a {
       text-decoration: none;
       color: #d86a8a;
       font-weight: bold;
       text-shadow: 1px 1px 1px #fff0f4;
+      cursor: pointer;
     }
+
     .main-content {
       flex: 1;
       padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .image-card {
+      background: #ffe6ec;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .image-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #555;
     }
   </style>
 </head>
@@ -58,7 +98,7 @@
       </ul>
     </div>
 
-    <!-- 右側主內容區：這裡會載入 home.html、ai.html、beforeafter.html -->
+    <!-- 主內容區（載入外部 HTML） -->
     <div class="main-content">
       <div id="main-area">Loading...</div>
     </div>
@@ -66,7 +106,6 @@
 
   <script>
     function showSection(section) {
-      // section 參數對應檔名，例如 showSection('home') 就會載入 home.html
       fetch(`${section}.html`)
         .then(res => res.text())
         .then(html => {
@@ -77,8 +116,8 @@
         });
     }
 
-    // 預設進入頁面時先載入 home.html
     window.onload = () => showSection("home");
   </script>
 </body>
 </html>
+
