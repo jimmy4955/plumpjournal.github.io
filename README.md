@@ -20,7 +20,7 @@
 
 > AI 胖女孩與瘦胖對比展示（僅供預覽，請至主站瀏覽完整內容）
 
-![preview](https://raw.githubusercontent.com/jimmy4955/plumpjournal.github.io/main/Alcreate/BeforeAndAfter/ba04.png)
+![preview](https://raw.githubusercontent.com/jimmy4955/plumpjournal.github.io/main/Alcreate/BeforeAndAfter/ba01.png)
 
 ---
 
