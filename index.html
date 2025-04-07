@@ -1,40 +1,115 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <title>Plump Journal</title>
-    <style>
-        body {
-            font-family: "微軟正黑體", sans-serif;
-            background-color: #fff4f6;
-            color: #333;
-            padding: 40px;
-            line-height: 1.8;
-        }
-        h1 {
-            color: #d86a8a;
-        }
-        .note {
-            background-color: #ffe6ec;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 800px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>圖片展示｜Plump Journal</title>
+  <style>
+    body {
+      font-family: "微軟正黑體", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff4f6;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    /* 左邊分類欄 */
+    .sidebar {
+      width: 220px;
+      background-color: #fddfe8;
+      padding: 20px;
+      height: 100vh;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      color: #b54870;
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #d86a8a;
+      font-weight: bold;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .image-card {
+      background: #ffe6ec;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <h1>胖胖幻想創作站｜Plump Journal</h1>
-    <div class="note">
-        <p>歡迎來到胖胖幻想創作空間！</p>
-        <p>這裡紀錄各種「女性變胖」、「肥滿化魔法」、「日常變圓」的圖像與小說。</p>
-        <p>
-            <a href="gallery.html">點我觀看 AI 變胖圖片展示</a>
-        </p>
-        <p>🔹 AI 圖片展示（即將上線）<br>
-           🔹 原創小說連載（準備中）<br>
-           🔹 製作筆記與幻想設定分享</p>
-        <p>感謝你的到訪，這裡將持續更新！</p>
+  <div class="container">
+    
+    <!-- 左邊分類欄 -->
+    <div class="sidebar">
+      <h2>分類選單</h2>
+      <ul>
+        <li><a href="#">AI 生成圖</a></li>
+        <li><a href="#">Before & After</a></li>
+        <li><a href="#">胖化漫畫</a></li>
+        <li><a href="#">原創角色</a></li>
+        <li><a href="#">爆衣場景</a></li>
+      </ul>
     </div>
+
+    <!-- 右邊圖片展示區 -->
+    <div class="main-content">
+      <h1>變胖對比圖展示區</h1>
+      <div class="gallery">
+
+        <div class="image-card">
+          <img src="images/ba01.png" alt="Before & After 01">
+          <div class="caption">女主角：理紗｜從 42kg 增胖到 78kg</div>
+        </div>
+
+        <div class="image-card">
+          <img src="images/ba02.png" alt="Before & After 02">
+          <div class="caption">女主角：小紅｜穿同一件T恤的兩年變化</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
