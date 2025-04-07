@@ -11,11 +11,9 @@
       background-color: #fff4f6;
       color: #333;
     }
-
     .container {
       display: flex;
     }
-
     .sidebar {
       width: 220px;
       background-color: #fddfe8;
@@ -23,72 +21,32 @@
       height: 100vh;
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     }
-
     .sidebar h2 {
       font-size: 18px;
       color: #b54870;
       margin-bottom: 15px;
     }
-
     .sidebar ul {
       list-style: none;
       padding: 0;
     }
-
     .sidebar li {
       margin-bottom: 10px;
     }
-
     .sidebar a {
       text-decoration: none;
       color: #d86a8a;
       font-weight: bold;
       cursor: pointer;
     }
-
     .main-content {
       flex: 1;
       padding: 40px;
     }
-
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .image-card {
-      background: #ffe6ec;
-      padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-
-    .image-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .caption {
-      margin-top: 10px;
-      font-size: 15px;
-      color: #555;
-    }
   </style>
 </head>
 <body>
-
   <div class="container">
-
     <!-- 左側選單 -->
     <div class="sidebar">
       <h2>Menu</h2>
@@ -99,63 +57,27 @@
       </ul>
     </div>
 
-    <!-- 右側內容 -->
+    <!-- 右側主內容區：這裡會載入 home.html、ai.html、beforeafter.html -->
     <div class="main-content">
-
-      <!-- Home -->
-      <div id="home" class="section active">
-        <h1>Plump Journal｜胖胖幻想創作站</h1>
-        <p>歡迎來到胖胖幻想創作空間，這裡紀錄女性變胖的各種樣貌與奇幻設定。</p>
-        <div class="gallery">
-            <div class="image-card">
-                <img src="Alcreate/BeforeAndAfter/ba01.png" alt="女孩體重增加">
-            </div>
-            <div class="image-card">
-                <img src="Alcreate/BeforeAndAfter/ba02.png" alt="兩年的驚人變化">
-            </div>
-            <div class="image-card">
-                <img src="Alcreate/AI_BBW/bbw01.png" alt="辦公室的胖女孩">
-            </div>
-        </div>
-      </div>
-
-      <!-- AI 胖美女 -->
-      <div id="ai" class="section">
-        <h1>AI 胖美女</h1>
-        <div class="gallery">
-          <div class="image-card">
-            <img src="Alcreate/AI_BBW/bbw01.png" alt="AI 胖女孩1">
-            <div class="caption">吃到停不下來</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Before & After -->
-      <div id="beforeafter" class="section">
-        <h1>Before & After</h1>
-        <div class="gallery">
-          <div class="image-card">
-            <img src="Alcreate/BeforeAndAfter/ba01.png" alt="Before & After 01">
-            <div class="caption">從42kg增胖到78kg</div>
-          </div>
-          <div class="image-card">
-            <img src="Alcreate/BeforeAndAfter/ba02.png" alt="Before & After 02">
-            <div class="caption">兩年的驚人變化</div>
-          </div>
-        </div>
-      </div>
-
+      <div id="main-area">Loading...</div>
     </div>
   </div>
 
   <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function showSection(section) {
+      // section 參數對應檔名，例如 showSection('home') 就會載入 home.html
+      fetch(`${section}.html`)
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("main-area").innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById("main-area").innerHTML = '<p>資料無法載入</p>';
+        });
     }
-  </script>
 
+    // 預設進入頁面時先載入 home.html
+    window.onload = () => showSection("home");
+  </script>
 </body>
 </html>
-
