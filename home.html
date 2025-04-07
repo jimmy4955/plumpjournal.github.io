@@ -1,28 +1,31 @@
-<h1>肥満化✧AI研究所｜Plump Journal</h1>
-<p>歡迎來到肥満化幻想空間，這裡專注於記錄豐滿女性的奇幻變化旅程，展示各種 AI 生成的夢幻變胖畫面 </p>
+<body>
+  <h1>肥滿化✦AI研究所｜Plump Journal</h1>
+  <p>歡迎來到肥滿化幻想空間，這裡專注於記錄豐滿女性的奇幻變化旅程，展示各種 AI 生成的夢幻變胖畫面。</p>
 
-<div class="gallery" id="random-gallery"></div>
-<script src="image-list.js"></script>
-<script>
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  <div class="gallery" id="random-gallery"></div>
+
+  <script src="image-list.js?v=1"></script>
+  <script>
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
-    return array;
-  }
 
-  const randomImages = shuffle(imageList).slice(0, 6);
-  const container = document.getElementById("random-gallery");
+    const randomImages = shuffle(imageList).slice(0, 6);
+    const container = document.getElementById("random-gallery");
 
-  randomImages.forEach(src => {
-    const div = document.createElement("div");
-    div.className = "image-card";
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = "隨機圖片";
-    img.loading = "lazy";
-    div.appendChild(img);
-    container.appendChild(div);
-  });
-</script>
+    randomImages.forEach(src => {
+      const div = document.createElement("div");
+      div.className = "image-card";
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "隨機圖片";
+      img.loading = "lazy";
+      div.appendChild(img);
+      container.appendChild(div);
+    });
+  </script>
+</body>
