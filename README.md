@@ -2,8 +2,7 @@
 
 歡迎來到 **Plump Journal**，這裡是以女性變胖、幻想肥化為主題的圖文創作網站。
 
-👉 網站連結：[https://jimmy4955.github.io](https://jimmy4955.github.io)
-
+👉 網站連結：[https://jimmy4955.github.io](https://jimmy4955.github.io/plumpjournal.github.io/
 ---
 
 ## 📌 特色內容
